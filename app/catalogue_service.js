@@ -41,19 +41,37 @@ function checkBookByTitle(title) {
 }
 
 function countBooksByFirstLetter(letter) {
-  // Your code here
+  let count = 0;
+  for (let i = 0; i < catalogue.length; i++) {
+    if (catalogue[i].title.toLowerCase().charAt(0) == letter.toLowerCase())
+      count++;
+  }
+  return count;
 }
 
 function getQuantity(title) {
-  // Your code here
+  for (let i = 0; i < catalogue.length; i++) {
+    if (catalogue[i].title == title) {
+      return catalogue[i].quantity;
+    }
+  }
 }
 
 function getBooksByAuthor(author) {
-  // Your code here
+  let found = [];
+  for (let i = 0; i < catalogue.length; i++) {
+    if (catalogue[i].author === author)
+      found.push(catalogue[i]);
+  }
+  return found;
 }
 
 function checkQuantity(title, quantity) {
-  // Your code here
+  for (let i=0; i<catalogue.length; i++) {
+    if (catalogue[i].title === title && quantity < catalogue[i].quantity)
+    return true; 
+  } 
+  return false;
 }
 
 module.exports = {

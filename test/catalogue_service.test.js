@@ -28,5 +28,27 @@ describe("catalogueService", () => {
     test("return the total number of books that begin with the given letter", () => {
       expect(catalogueService.countBooksByFirstLetter("W")).toBe(2);
     });
+    test("return the total number of books that begin with the given letter", () => {
+      expect(catalogueService.countBooksByFirstLetter("w")).toBe(2);
+    });
+  });
+  describe("catalogueService.getQuantity", () => {
+    test("return the quantity of given item which is in stock", () => {
+      expect(catalogueService.getQuantity("A Place of Greater Safety")).toBe(11);
+    });
+  });
+  describe("catalogueService.getBooksByAuthor", () => {
+    test("return an array of books by a given author", () => {
+      expect(catalogueService.getBooksByAuthor("Robert Bolaño")).toEqual([
+        { title: "2666", author: "Robert Bolaño", quantity: 17 },
+        { title: "By Night In Chile", author: "Robert Bolaño", quantity: 8 }
+      ]);
+    });
+  });
+  describe("catalogueService.checkQuantity", () => {
+    test("return true if there are at least as many books in stock as the given quantity, and false otherwise", () => {
+      expect(catalogueService.checkQuantity("By Night In Chile", 4)).toBe(true);
+      expect(catalogueService.checkQuantity("By Night In Chile", 100)).toBe(false);
+    });
   });
 });
